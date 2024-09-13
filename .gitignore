@@ -1,0 +1,44 @@
+# Python
+*.pyc
+*.pyo
+*.pyd
+__pycache__/
+*.pdb
+*.egg-info/
+.eggs/
+dist/
+build/
+*.so
+
+# Flask
+instance/
+*.db
+*.sqlite3
+*.log
+
+# Environment
+.env
+venv/
+env/
+.venv/
+.venv/
+*.py[cod]
+
+# PyCharm
+.idea/
+
+# VSCode
+.vscode/
+
+# Jupyter Notebook
+.ipynb_checkpoints/
+
+# MacOS
+.DS_Store
+
+# Windows
+Thumbs.db
+
+.env
+migrations/
+/migrations
