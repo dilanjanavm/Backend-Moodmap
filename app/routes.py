@@ -245,7 +245,7 @@ def generate_gpt_suggestions(main_emotions):
             {"role": "user", "content": prompt}])
 
         print(completion)
-        response_text = completion['choices'][0]['message']['content']
+        response_text = completion.choices[0].message.content
 
         # Log the raw response for debugging purposes
         print('=======================================')
