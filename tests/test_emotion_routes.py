@@ -1,6 +1,3 @@
-import pytest
-from unittest.mock import patch
-from datetime import datetime
 
 # TC005: Test Emotion Prediction Success
 # tests/test_emotion_prediction.py
@@ -26,6 +23,7 @@ def test_predict_emotion_success(client):
     })
 
 
+# TC006: Test Emotion Prediction With Invalid Text
 def test_predict_emotion_invalid_text(client):
     # Step 1: Perform a login to get a JWT token
     login_response = client.post('/login', json={'email': 'testuser@example.com', 'password': 'testpass'})
@@ -54,6 +52,7 @@ def test_predict_emotion_invalid_text(client):
     assert data['message'] == 'Text input is required'
 
 
+# TC007: Test Emotion Prediction With missing JWT
 def test_predict_emotion_missing_jwt(client):
     response = client.post('/predict_details', json={
         'text': 'I am feeling very happy today!',

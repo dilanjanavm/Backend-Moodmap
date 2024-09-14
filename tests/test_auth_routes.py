@@ -34,12 +34,10 @@ def test_register_user(client):
         'password': 'newpassword'
     })
 
-    # Check that the registration was successful
     assert response.status_code == 201
     data = response.get_json()
     assert data['message'] == 'User registered successfully'
 
-    # Check that the new user exists in the database
     user = User.query.filter_by(email='newuser@example.com').first()
     assert user is not None
     assert user.username == 'newuser'
@@ -47,14 +45,12 @@ def test_register_user(client):
 
 #TC002
 def test_register_existing_user(client):
-    # Try registering a user with an existing email
     response = client.post('/register', json={
         'username': 'testuser',
         'email': 'testuser@example.com',
         'password': 'testpassword'
     })
 
-    # Check that the registration fails
     assert response.status_code == 400
     data = response.get_json()
     assert data['message'] == 'User already exists'
@@ -86,7 +82,7 @@ def test_login_invalid_password(client):
 
 
 def test_protected_route_without_token(client):
-    response = client.get('/diary-reports')  # Replace with an actual protected route
+    response = client.get('/diary-reports')
 
     assert response.status_code == 401
     data = response.get_json()

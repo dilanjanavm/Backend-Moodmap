@@ -1,9 +1,8 @@
-import pytest
 from datetime import datetime, timedelta
 
 
 # Test Case for /emotion-reports endpoint
-# TC013 - Get Emotion Reports for a Valid Date Range (JWT required)
+# TC010 - Get Emotion Reports for a Valid Date Range (JWT required)
 def test_get_emotion_reports_success(client):
     # Step 1: Perform a login to get a JWT token
     login_response = client.post('/login', json={'email': 'testuser@example.com', 'password': 'testpass'})
@@ -48,7 +47,7 @@ def test_get_emotion_reports_success(client):
     assert len(data['suggestions']) > 0
 
 
-# TC014: Test Emotion Reports - Missing Start and End Date
+# TC011: Test Emotion Reports - Missing Start and End Date
 def test_get_emotion_reports_missing_dates(client):
     # Step 1: Perform a login to get a JWT token
     login_response = client.post('/login', json={'email': 'testuser@example.com', 'password': 'testpass'})
@@ -72,7 +71,7 @@ def test_get_emotion_reports_missing_dates(client):
     assert data['message'] == 'Start date and end date are required'
 
 
-# TC015: Test Emotion Reports - Invalid Date Format
+# TC012: Test Emotion Reports - Invalid Date Format
 def test_get_emotion_reports_invalid_date_format(client):
     # Step 1: Perform a login to get a JWT token
     login_response = client.post('/login', json={'email': 'testuser@example.com', 'password': 'testpass'})
@@ -99,7 +98,7 @@ def test_get_emotion_reports_invalid_date_format(client):
     assert data['message'] == 'Invalid date format. Use YYYY-MM-DD.'
 
 
-# TC016: Test Emotion Reports - No Diary Entries Found
+# TC013: Test Emotion Reports - No Diary Entries Found
 def test_get_emotion_reports_no_entries_found(client):
     # Step 1: Perform a login to get a JWT token
     login_response = client.post('/login', json={'email': 'testuser@example.com', 'password': 'testpass'})
@@ -126,7 +125,7 @@ def test_get_emotion_reports_no_entries_found(client):
     assert data['message'] == 'No diary entries found for the given date range'
 
 
-# TC017: Test Emotion Reports - Unauthorized Access (Missing JWT)
+# TC014: Test Emotion Reports - Unauthorized Access (Missing JWT)
 def test_get_emotion_reports_unauthorized(client):
     # Step 1: Send the request to /emotion-reports without a JWT token
     response = client.post('/emotion-reports', json={
