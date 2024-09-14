@@ -11,7 +11,7 @@ build/
 *.so
 
 # Flask
-instance/
+#instance/
 *.db
 *.sqlite3
 *.log
