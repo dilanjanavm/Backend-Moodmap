@@ -10,7 +10,7 @@ db = SQLAlchemy()
 def create_app(config_name=None):
     app = Flask(__name__)
     print('call create app')
-    CORS(app)
+    CORS(app, resources={r"/": {"origins": "http://143.198.91.72"}})
     # app.config.from_object('instance.config.Config')
     app.config['DEBUG'] = True
     if config_name:
